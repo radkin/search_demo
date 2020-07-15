@@ -1,8 +1,15 @@
-<mat-toolbar color="primary">
-  <h1>
-    Toolbar Example
-  </h1>
-  <button mat-button routerLink="/">Home</button>
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
 </mat-toolbar>
 
 <div class="mat-elevation-z8">
@@ -36,7 +43,11 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-paginator [length]="100"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+
 </div>
 
 <router-outlet></router-outlet>
