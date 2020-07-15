@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+
 import {
   trigger,
   state,
@@ -67,6 +68,20 @@ const   ELEMENT_DATA: PeriodicElement[] = [
 
 export class AppComponent implements OnInit {
   title = 'search-demo';
+
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
 
   isOpen = true;
   toggle() {
