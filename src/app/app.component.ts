@@ -2,6 +2,14 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
+
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -35,15 +43,53 @@ const   ELEMENT_DATA: PeriodicElement[] = [
   @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.css'],
+    animations: [
+      trigger('openClose', [
+        state('open', style({
+          height: '200px',
+          opacity: 1,
+          backgroundColor: 'yellow'
+        })),
+        state('closed', style({
+          height: '100px',
+          opacity: 0.5,
+          backgroundColor: 'green'
+        })),
+        transition('open => closed', [
+          animate('1s')
+        ]),
+        transition('closed => open', [
+          animate('0.5s')
+        ]),
+      ]),
+    ]
   })
 
 export class AppComponent implements OnInit {
   title = 'search-demo';
+
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
+
+  isOpen = true;
+  toggle() {
+    this.isOpen = !this.isOpen;
+  }
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   ngOnInit() {
