@@ -19,9 +19,23 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from "@angular/material/select";
 import { MatInputModule } from "@angular/material/input";
 
+// custom
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { FooterComponent } from './footer/footer.component';
+import { AsideComponent } from './aside/aside.component';
+import { MainComponent } from './main/main.component';
+import { NavComponent } from './nav/nav.component';
+import { HeaderComponent } from './header/header.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PrivacyPolicyComponent,
+    FooterComponent,
+    AsideComponent,
+    MainComponent,
+    NavComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
