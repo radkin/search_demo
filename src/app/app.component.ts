@@ -39,7 +39,7 @@ const   ELEMENT_DATA: PeriodicElement[] = [
   })
 
 export class AppComponent implements OnInit {
-  title = 'searchit-demo';
+  title = 'search-demo';
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
